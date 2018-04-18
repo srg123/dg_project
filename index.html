@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->
+    <title>春运运行显示系统</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        #container {
+            width: 100%;
+            height: 100%;
+            background: #0f1722;
+        }
+
+    </style>
+
+    <script src="assets/libs/three/three.js"></script>
+    <script src="assets/libs/three/js/MeshLine.js"></script>
+    <script src="assets/libs/three/js/THREE.ConstantSpline.js"></script>
+    <script src="assets/libs/three/tool/Maf.js"></script>
+<!--
+    <script src='assets/libs/three/js/lines/LineSegmentsGeometry.js'></script>
+    <script src='assets/libs/three/js/lines/LineGeometry.js'></script>
+    <script src='assets/libs/three/js/lines/WireframeGeometry2.js'></script>
+
+    <script src='assets/libs/three/js/lines/LineMaterial.js'></script>
+
+    <script src='assets/libs/three/js/lines/LineSegments2.js'></script>
+    <script src='assets/libs/three/js/lines/Line2.js'></script>
+    <script src='assets/libs/three/js/lines/Wireframe.js'></script>-->
+
+    <script src="assets/libs/echarts/echarts.js"></script>
+    <script src="assets/libs/echarts/echarts-gl.min.js"></script>
+    <script src="assets/libs/maptalks/maptalks.min.js"></script>
+    <script src="assets/libs/maptalks/maptalks.e3.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/maptalks.three/dist/maptalks.three.js"></script>
+
+    <script src="assets/data/population.js"></script>
+    <script src="assets/data/world2.js"></script>
+    <script src="assets/map/js/china.js"></script>
+
+</head>
+<body>
+    <img src="assets/img/logo.png" alt="" class="logo" draggable="false">
+    <div class="date">-------- --:--:--</div>
+    <div class="left-content">
+        <!-- <div class="title">全国民航运行态势</div>
+        <div class="sub-title">National civil aviation operation situation</div> -->
+        <div class="info-box">
+            <table>
+                <tr>
+                    <td><img src="assets/img/plane.png" alt="" draggable="false"></td>
+                    <td>全国计划飞行班次</td>
+                    <td id="scheduleFlightsCount">0</td>
+                </tr>
+                <tr>
+                    <td><img src="assets/img/plane.png" alt="" draggable="false"></td>
+                    <td>国内航空公司<span><i>( 国内 )<i></i>( 国际 )</i></span></td>
+                    <td>
+                        <em id="nnsFlightsCount">0</em>
+                        <em id="nfsFlightsCount">0</em>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="assets/img/plane.png" alt="" draggable="false"></td>
+                    <td>国外及港澳台<br />航空公司<span><i>( 飞越 )<i></i>( 落地 )</i></span></td>
+                    <td>
+                        <em id="fosFlightsCount">0</em>
+                        <em id="fasFlightsCount">0</em>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="assets/img/plane.png" alt="" draggable="false"></td>
+                    <td>专机计划班次</td>
+                    <td id="specialFlightsCount">0</td>
+                </tr>
+                <tr>
+                    <td><img src="assets/img/plane.png" alt="" draggable="false"></td>
+                    <td>要客计划班次</td>
+                    <td id="vipFlightsCount">0</td>
+                </tr>
+                <tr>
+                    <td><img src="assets/img/plane.png" alt="" draggable="false"></td>
+                    <td>离港计划已执行</td>
+                    <td id="executeDepFlihgtsCount">0</td>
+                </tr>
+                <tr>
+                    <td><img src="assets/img/plane.png" alt="" draggable="false"></td>
+                    <td>到港计划已执行</td>
+                    <td id="executeArrFlihgtsCount">0</td>
+                </tr>
+                <tr>
+                    <td><img src="assets/img/plane.png" alt="" draggable="false"></td>
+                    <td>起飞延误班次</td>
+                    <td id="delayFlightsCount">0</td>
+                </tr>
+                <tr>
+                    <td><img src="assets/img/plane.png" alt="" draggable="false"></td>
+                    <td>关舱门后等待班次 <br /> （2小时以上）</td>
+                    <td id="cld120FlightsCount">0</td>
+                </tr>
+                <tr>
+                    <td><img src="assets/img/plane.png" alt="" draggable="false"></td>
+                    <td>计划航班正常率</td>
+                    <td id="scheduleOnTimeRate">0</td>
+                </tr>
+                <tr>
+                    <td><img src="assets/img/plane.png" alt="" draggable="false"></td>
+                    <td>平均航班延误时间</td>
+                    <td id="delayAvgTime">0</td>
+                </tr>
+            </table>
+        </div>   
+    </div>
+    <ul class="right-content">
+        <li>
+            <div class="weather-title">
+                    今日天气
+                    <!-- <span>TODAY WEATHER</span> -->
+            </div>
+            <ul>
+                <li>
+                    <span></span>
+                    <img src="./assets/img/weather/SY.png" alt="" draggable="false">
+                    <p>0°</p>
+                    <p>晴天</p>
+                    <p>风速：--米/秒</p>
+                    <p>风向：0</p>
+                    <p>能见度：----米</p>
+                </li>
+                <li>
+                    <span></span>
+                    <img src="./assets/img/weather/SY.png" alt="" draggable="false">
+                    <p>0°</p>
+                    <p>晴天</p>
+                    <p>风速：--米/秒</p>
+                    <p>风向：0</p>
+                    <p>能见度：----米</p>
+                </li>
+                <li>
+                    <span></span>
+                    <img src="./assets/img/weather/SY.png" alt="" draggable="false">
+                    <p>0°</p>
+                    <p>晴天</p>
+                    <p>风速：--米/秒</p>
+                    <p>风向：0</p>
+                    <p>能见度：----米</p>
+                </li>
+                <li>
+                    <span></span>
+                    <img src="./assets/img/weather/SY.png" alt="" draggable="false">
+                    <p>0°</p>
+                    <p>晴天</p>
+                    <p>风速：--米/秒</p>
+                    <p>风向：0</p>
+                    <p>能见度：----米</p>
+                </li>
+                <li>
+                    <span></span>
+                    <img src="./assets/img/weather/SY.png" alt="" draggable="false">
+                    <p>0°</p>
+                    <p>晴天</p>
+                    <p>风速：--米/秒</p>
+                    <p>风向：0</p>
+                    <p>能见度：----米</p>
+                </li>
+                <li>
+                    <span></span>
+                    <img src="./assets/img/weather/SY.png" alt="" draggable="false">
+                    <p>0°</p>
+                    <p>晴天</p>
+                    <p>风速：--米/秒</p>
+                    <p>风向：0</p>
+                    <p>能见度：----米</p>
+                </li>
+                <li>
+                    <span></span>
+                    <img src="./assets/img/weather/SY.png" alt="" draggable="false">
+                    <p>0°</p>
+                    <p>晴天</p>
+                    <p>风速：--米/秒</p>
+                    <p>风向：0</p>
+                    <p>能见度：----米</p>
+                </li>
+                <li>
+                    <span></span>
+                    <img src="./assets/img/weather/SY.png" alt="" draggable="false">
+                    <p>0°</p>
+                    <p>晴天</p>
+                    <p>风速：--米/秒</p>
+                    <p>风向：0</p>
+                    <p>能见度：----米</p>
+                </li>
+            </ul>
+        </li>
+        <li id="flightTimeWrapper"></li>
+        <li id="cityWrapper"></li>
+        <li id="companyWrapper"></li>
+    </ul>
+    <div class="notice">
+        <!-- <img src="assets/img/notice-icon.png" alt="" draggable="false"> -->
+        <span>--------------------------------------------------------</span>
+    </div>
+    <img src="assets/img/thumbnail.png" alt="" draggable="false" class="thumbnail">
+    <img src="assets/img/tuli.png" alt="" draggable="false" class="tuli">
+    <div id="container"></div>
+
+    <script>if (typeof module === 'object') {
+        window.module = module;
+        module = undefined;
+    }</script>
+
+    <script src="assets/libs/jquery/jquery-2.1.1.min.js"></script>
+    <script src="assets/libs/three/js/controls/TrackballControls.js"></script>
+    <script src="assets/libs/three/js/threeGeoJSON.js"></script>
+    <script src="assets/pathdata.js"></script>
+    <script src="assets/three3D.js"></script>
+
+
+<!--    <script src="assets/libs/three/tool/stats.min.js"></script>
+    <script src="assets/libs/three/tool/html2canvas.js"></script>-->
+
+
+    <script src="assets/index.js"></script>
+<!--    <script src="assets/script.js"></script>-->
+    <script src="assets/flightTime.js"></script>
+    <script src="assets/data/city.js"></script>
+    <script src="assets/company.js"></script>
+    <script src="assets/weather.js"></script>
+
+    <script>if (window.module) module = window.module;</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+/*get_airport?apName=ZBAA*/
+{"code":200,"data":[{"airportLevel":"1","airportName":"北京/首都","airportType":"民用机场","apName":"ZBAA","arrCapacity":"-1","availableStand":"89","depCapacity":"-1","elevation":"35.3","firId":"1","lat":"40.0722222222222","lng":"116.597222222222","runway":"01/19跑道 3800*60;18L/36R跑道 3800*60;18R/36L跑道 3200*50","totalStand":"352","timestamp":null}]}
+/*
+get_airport?apName=ZSSS*/
+{"code":200,"data":[{"HVisibility":"-1","apName":"ZSSS","missionDate":"20171229","timeStamp":"201712291428","weatherStatus":"DZ","windSpeed":"-1"}]}
+
+/*
+get_airport?apName=ZBAA*/
+{"code":200,"data":[{"HVisibility":"-1","apName":"ZBAA","missionDate":"20171229","timeStamp":"201712291428","weatherStatus":"SN","windSpeed":"-1"}]}
+
+/*
+get_airport?apName=ZGSZ*/
+{"code":200,"data":[{"HVisibility":"-1","apName":"ZGSZ","missionDate":"20171229","timeStamp":"201712291428","weatherStatus":"SN","windSpeed":"-1"}]}
+/*
+
+get_airport?apName=ZSSS*/
+
+{"code":200,"data":[{"airportLevel":"1","airportName":"上海/虹桥","airportType":"民用机场","apName":"ZSSS","arrCapacity":"-1","availableStand":"160","depCapacity":"-1","elevation":"2.8","firId":"2","lat":"31.1977777777778","lng":"121.336111111111","runway":"18L/36R跑道 3400*58;18R/36L跑道 3300*60","totalStand":"183","timestamp":null}]}
+
+/*
+get_airport?apName=ZPJH*/
+{"code":200,"data":[{"airportLevel":"4","airportName":"西双版纳/嘎洒","airportType":"民用机场","apName":"ZPJH","arrCapacity":"-1","availableStand":"-1","depCapacity":"-1","elevation":"553.1","firId":"8","lat":"21.9736111111111","lng":"100.7625","runway":"16/34跑道 2400*45","totalStand":"-1","timestamp":null}]}
+
+/*
+get_airport?apName=ZPPP*/
+{"code":200,"data":[{"airportLevel":"1","airportName":"昆明/长水","airportType":"民用机场","apName":"ZPPP","arrCapacity":"-1","availableStand":"15","depCapacity":"-1","elevation":"2103.5","firId":"8","lat":"25.1036111111111","lng":"102.942777777778","runway":"03/21跑道 4000*45;04/22跑道 4500*60","totalStand":"110","timestamp":null}]}
+
+/*
+get_airport?apName=ZSPD*/
+
+{"code":200,"data":[{"airportLevel":"1","airportName":"上海/浦东","airportType":"民用机场","apName":"ZSPD","arrCapacity":"-1","availableStand":"46","depCapacity":"-1","elevation":"3.8","firId":"2","lat":"31.1441666666667","lng":"121.7925","runway":"17R/35L跑道 3400*60;16L/34R跑道 3800*60;16R/34L跑道 3800*60;17L/35R跑道 4000*60","totalStand":"255","timestamp":null}]}
+
+/*get_airport?apName=VHHH*/
+
+{"code":200,"data":[{"airportLevel":"0","airportName":"香港","airportType":"民用机场","apName":"VHHH","arrCapacity":"-1","availableStand":"-1","depCapacity":"-1","elevation":"6","firId":"4","lat":"22.31","lng":"113.911666666667","runway":"07R/25L跑道 3800*60;07L/25R跑道 3800*60","totalStand":"-1","timestamp":null}]}
+
+/*get_airport?apName=ZSHC*/
+{"code":200,"data":[{"airportLevel":"1","airportName":"杭州/萧山","airportType":"民用机场","apName":"ZSHC","arrCapacity":"-1","availableStand":"113","depCapacity":"-1","elevation":"6.7","firId":"2","lat":"30.2294444444444","lng":"120.434166666667","runway":"06/24跑道 3400*60;07/25跑道 3600*45","totalStand":"234","timestamp":null}]}
+
+/*
+get_airport?apName=VHHH*/
+{"code":200,"data":[{"airportLevel":"0","airportName":"香港","airportType":"民用机场","apName":"VHHH","arrCapacity":"-1","availableStand":"-1","depCapacity":"-1","elevation":"6","firId":"4","lat":"22.31","lng":"113.911666666667","runway":"07R/25L跑道 3800*60;07L/25R跑道 3800*60","totalStand":"-1","timestamp":null}]}
+
+/*get_airport?apName=ZSPD */
+{"code":200,"data":[{"airportLevel":"1","airportName":"上海/浦东","airportType":"民用机场","apName":"ZSPD","arrCapacity":"-1","availableStand":"46","depCapacity":"-1","elevation":"3.8","firId":"2","lat":"31.1441666666667","lng":"121.7925","runway":"17R/35L跑道 3400*60;16L/34R跑道 3800*60;16R/34L跑道 3800*60;17L/35R跑道 4000*60","totalStand":"255","timestamp":null}]}
+
+/*
+get_airport?apName=ZUUU */
+{"code":200,"data":[{"airportLevel":"1","airportName":"成都/双流","airportType":"民用机场","apName":"ZUUU","arrCapacity":"-1","availableStand":"-1","depCapacity":"-1","elevation":"512.4","firId":"8","lat":"30.5783333333333","lng":"103.946944444444","runway":"02R/20L跑道 3600*60;02L/20R跑道 3600*45","totalStand":"-1","timestamp":null}]}
+
